@@ -12,4 +12,4 @@ function convertVideoToAudio(input, output) {
         .save(output);
 }
 
-convertVideoToAudio('video.mp4', 'audio.wav');
+convertVideoToAudio('video.mp4', 'glaces.wav');
