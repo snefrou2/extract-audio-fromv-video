@@ -1,6 +1,15 @@
 const ffmpeg = require('fluent-ffmpeg');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
+
+const ffmpegPath = path.join(
+    __dirname,
+    'ffmpeg',
+    'ffmpeg.exe'
+);
+
+ffmpeg.setFfmpegPath(ffmpegPath);
+
 
 const VIDEO_EXTENSIONS = ['.mp4', '.mov', '.avi', '.mkv', '.webm'];
 const AUDIO_EXTENSIONS = [
