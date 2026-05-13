@@ -1,0 +1,44 @@
+body {
+    font-family: Arial;
+    background: #111;
+    color: white;
+    padding: 30px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.block {
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.start {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#logs {
+    margin-top: 30px;
+    background: #222;
+    padding: 20px;
+    height: 300px;
+    overflow: auto;
+}

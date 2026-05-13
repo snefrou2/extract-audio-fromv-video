@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Video → Audio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🎵 Video to WAV</h1>
+
+        <div class="block">
+            <label>Dossier vidéos</label>
+
+            <div class="row">
+                <input id="inputFolder" readonly />
+                <button id="browseInput">Choisir</button>
+            </div>
+        </div>
+
+        <div class="block">
+            <label>Dossier output</label>
+
+            <div class="row">
+                <input id="outputFolder" readonly />
+                <button id="browseOutput">Choisir</button>
+            </div>
+        </div>
+
+        <button id="startButton" class="start">
+            Convertir
+        </button>
+
+        <pre id="logs"></pre>
+
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
