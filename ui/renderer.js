@@ -1,41 +1,105 @@
-const inputFolder = document.getElementById('inputFolder');
-const outputFolder = document.getElementById('outputFolder');
-
 const logs = document.getElementById('logs');
 
-document.getElementById('browseInput')
-    .addEventListener('click', async () => {
+function addLog(message) {
+    logs.textContent += message + '\n';
+}
 
-        const folder =
-            await window.electronAPI.selectFolder();
+// =======================
+// TABS
+// =======================
 
-        if (folder) {
-            inputFolder.value = folder;
-        }
+document.querySelectorAll('.tab').forEach(tab => {
+
+    tab.addEventListener('click', () => {
+
+        document
+            .querySelectorAll('.tab')
+            .forEach(t => t.classList.remove('active'));
+
+        document
+            .querySelectorAll('.tabContent')
+            .forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+
+        document
+            .getElementById(tab.dataset.tab)
+            .classList.add('active');
     });
+});
 
-document.getElementById('browseOutput')
-    .addEventListener('click', async () => {
+// =======================
+// HELPERS
+// =======================
 
-        const folder =
-            await window.electronAPI.selectFolder();
+async function chooseFolder(inputId) {
 
-        if (folder) {
-            outputFolder.value = folder;
-        }
-    });
+    const folder =
+        await window.electronAPI.selectFolder();
 
-document.getElementById('startButton')
-    .addEventListener('click', async () => {
+    if (folder) {
+        document.getElementById(inputId).value = folder;
+    }
+}
+
+// =======================
+// VIDEO
+// =======================
+
+document
+    .getElementById('browseVideoInput')
+    .onclick = () =>
+        chooseFolder('videoInput');
+
+document
+    .getElementById('browseVideoOutput')
+    .onclick = () =>
+        chooseFolder('videoOutput');
+
+document
+    .getElementById('startVideo')
+    .onclick = async () => {
 
         logs.textContent = '';
 
-        await window.electronAPI.startConversion(
-            inputFolder.value,
-            outputFolder.value
-        );
-    });
+        await window.electronAPI
+            .startVideoConversion(
 
-window.electronAPI.onLog((message) => {
-    logs.textContent += message + '\n';
-});
+                document.getElementById('videoInput').value,
+
+                document.getElementById('videoOutput').value
+            );
+    };
+
+// =======================
+// AUDIO
+// =======================
+
+document
+    .getElementById('browseAudioInput')
+    .onclick = () =>
+        chooseFolder('audioInput');
+
+document
+    .getElementById('browseAudioOutput')
+    .onclick = () =>
+        chooseFolder('audioOutput');
+
+document
+    .getElementById('startAudio')
+    .onclick = async () => {
+
+        logs.textContent = '';
+
+        await window.electronAPI
+            .startAudioConversion(
+
+                document.getElementById('audioInput').value,
+
+                document.getElementById('audioOutput').value,
+
+                document.getElementById('audioFormat').value
+            );
+    };
+
+window.electronAPI.onLog(addLog);

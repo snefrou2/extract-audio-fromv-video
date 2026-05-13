@@ -1,11 +1,42 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const {
+    contextBridge,
+    ipcRenderer
+} = require('electron');
 
-contextBridge.exposeInMainWorld('electronAPI', {
-    selectFolder: () => ipcRenderer.invoke('select-folder'),
+contextBridge.exposeInMainWorld(
+    'electronAPI',
 
-    startConversion: (input, output) =>
-        ipcRenderer.invoke('start-conversion', input, output),
+    {
+        selectFolder: () =>
+            ipcRenderer.invoke('select-folder'),
 
-    onLog: (callback) =>
-        ipcRenderer.on('conversion-log', (_, message) => callback(message))
-});
+        startVideoConversion: (
+            input,
+            output
+        ) =>
+            ipcRenderer.invoke(
+                'start-video-conversion',
+                input,
+                output
+            ),
+
+        startAudioConversion: (
+            input,
+            output,
+            format
+        ) =>
+            ipcRenderer.invoke(
+                'start-audio-conversion',
+                input,
+                output,
+                format
+            ),
+
+        onLog: (callback) =>
+            ipcRenderer.on(
+                'conversion-log',
+
+                (_, message) => callback(message)
+            )
+    }
+);

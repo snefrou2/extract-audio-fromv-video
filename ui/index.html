@@ -1,42 +1,138 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Video → Audio</title>
+    <title>Audio Tools</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>🎵 Video to WAV</h1>
+    <h1>🎵 Audio Tools</h1>
 
-        <div class="block">
-            <label>Dossier vidéos</label>
+    <div class="tabs">
 
-            <div class="row">
-                <input id="inputFolder" readonly />
-                <button id="browseInput">Choisir</button>
-            </div>
-        </div>
+        <button class="tab active"
+                data-tab="videoTab">
 
-        <div class="block">
-            <label>Dossier output</label>
-
-            <div class="row">
-                <input id="outputFolder" readonly />
-                <button id="browseOutput">Choisir</button>
-            </div>
-        </div>
-
-        <button id="startButton" class="start">
-            Convertir
+            Video → WAV
         </button>
 
-        <pre id="logs"></pre>
+        <button class="tab"
+                data-tab="audioTab">
+
+            Audio Converter
+        </button>
 
     </div>
 
-    <script src="renderer.js"></script>
+    <!-- VIDEO TAB -->
+
+    <div id="videoTab" class="tabContent active">
+
+        <h2>Video → WAV</h2>
+
+        <div class="block">
+
+            <label>Dossier vidéos</label>
+
+            <div class="row">
+                <input id="videoInput" readonly>
+
+                <button id="browseVideoInput">
+                    Choisir
+                </button>
+            </div>
+        </div>
+
+        <div class="block">
+
+            <label>Dossier output</label>
+
+            <div class="row">
+                <input id="videoOutput" readonly>
+
+                <button id="browseVideoOutput">
+                    Choisir
+                </button>
+            </div>
+        </div>
+
+        <button id="startVideo">
+            Convertir
+        </button>
+
+    </div>
+
+    <!-- AUDIO TAB -->
+
+    <div id="audioTab" class="tabContent">
+
+        <h2>Audio Converter</h2>
+
+        <div class="block">
+
+            <label>Dossier Audio</label>
+
+            <div class="row">
+
+                <input id="audioInput" readonly>
+
+                <button id="browseAudioInput">
+                    Choisir
+                </button>
+
+            </div>
+        </div>
+
+        <div class="block">
+
+            <label>Dossier output</label>
+
+            <div class="row">
+
+                <input id="audioOutput" readonly>
+
+                <button id="browseAudioOutput">
+                    Choisir
+                </button>
+
+            </div>
+        </div>
+
+        <div class="block">
+
+            <label>Format</label>
+
+            <select id="audioFormat">
+
+                <option value="wav">
+                    WAV
+                </option>
+
+                <option value="mp3">
+                    MP3
+                </option>
+
+            </select>
+
+        </div>
+
+        <button id="startAudio">
+            Convertir Audio
+        </button>
+
+    </div>
+
+    <pre id="logs"></pre>
+
+</div>
+
+<script src="renderer.js"></script>
+
 </body>
 </html>

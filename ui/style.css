@@ -1,13 +1,46 @@
 body {
-    font-family: Arial;
-    background: #111;
+
+    background: #121212;
     color: white;
+
+    font-family: Arial;
+
     padding: 30px;
 }
 
 .container {
-    max-width: 700px;
+    max-width: 900px;
     margin: auto;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+
+    background: #222;
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #444;
+}
+
+.tabContent {
+    display: none;
+}
+
+.tabContent.active {
+    display: block;
 }
 
 .block {
@@ -19,26 +52,44 @@ body {
     gap: 10px;
 }
 
-input {
+input,
+select {
+
     flex: 1;
+
     padding: 10px;
+
+    background: #222;
+    color: white;
+
+    border: 1px solid #444;
 }
 
 button {
+
     padding: 10px 20px;
+
+    border: none;
+
+    background: #555;
+    color: white;
+
     cursor: pointer;
 }
 
-.start {
-    width: 100%;
-    margin-top: 20px;
-    font-size: 18px;
+button:hover {
+    background: #777;
 }
 
 #logs {
+
     margin-top: 30px;
-    background: #222;
+
+    background: #1d1d1d;
+
     padding: 20px;
-    height: 300px;
+
+    height: 250px;
+
     overflow: auto;
 }
